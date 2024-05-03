@@ -35,7 +35,7 @@ body {
   background-color: var(--background-color);
   margin: 0px;
   padding: 0px;
-  font-size: 3vmin;
+  font-size: 2.25vh;
 }
 
 #name {
