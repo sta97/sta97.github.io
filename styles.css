@@ -5,6 +5,7 @@ Colors from adobe color wheel
   --primary-color: #FFA333;
   --secondary-color: #FFBE33;
   --background-color: #FFC988;
+  --link-color: #5B90AA;
 }
 
 .pt-serif-regular {
@@ -38,6 +39,18 @@ body {
   font-size: 2.25vh;
 }
 
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
 #name {
   font-size: 2.25em;
   margin: 0px;
@@ -62,4 +75,10 @@ body {
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
+}
+
+.content {
+  text-align: center;
+  padding: 1em;
+  max-width: 40em;
 }
