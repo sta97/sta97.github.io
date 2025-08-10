@@ -1,57 +1,200 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stuart Aldrich — Homepage</title>
+  <meta name="description" content="Stuart Aldrich — PhD student at Washington University in St. Louis researching LLM behavior. Robotics and AI enthusiast." />
+  <link rel="icon" href="favicon.png" />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="Stuart Aldrich — Homepage" />
+  <meta property="og:description" content="PhD student at WashU researching LLM behavior. Robotics & AI enthusiast." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="website photo.jpg" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #121318;
+      --text: #e6e6e6;
+      --muted: #aab0b6;
+      --brand: #6aa0ff;
+      --brand-2: #7ef0c1;
+      --border: #1c1f26;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fb;
+        --card: #ffffff;
+        --text: #0e1013;
+        --muted: #536171;
+        --brand: #2f6bff;
+        --brand-2: #0aae7e;
+        --border: #eaeef3;
+        --shadow: 0 12px 30px rgba(14,16,19,.08);
+      }
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(106,160,255,.15), transparent 60%),
+                  radial-gradient(1000px 500px at 120% 10%, rgba(126,240,193,.12), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); text-underline-offset: 3px; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(1.2) blur(8px);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2px; }
+    .brand img { width: 24px; height: 24px; border-radius: 6px; }
+    .nav a { text-decoration: none; color: var(--text); opacity: .88; }
+    .nav a:hover { opacity: 1; }
+    .links { display: flex; gap: 22px; align-items: center; }
+    .cta { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 999px; background: var(--text); color: var(--bg); font-weight: 600; }
+    .cta:hover { filter: brightness(.96); }
 
-    <link rel="stylesheet" href="styles.css">
+    /* Hero */
+    .hero { padding: 64px 0 32px; }
+    .hero-inner { display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; align-items: center; }
+    @media (max-width: 860px) { .hero-inner { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero-card { padding: 28px; }
+    .kicker { font-size: 13px; letter-spacing: .4px; text-transform: uppercase; color: var(--muted); }
+    h1 { font-size: clamp(28px, 3.2vw + 12px, 44px); line-height: 1.1; margin: 8px 0 12px; }
+    .subtitle { font-size: 18px; color: var(--muted); margin-bottom: 18px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text); background: linear-gradient(180deg, color-mix(in oklab, var(--card) 98%, transparent) 0%, var(--card) 100%); }
+    .btn:hover { border-color: color-mix(in oklab, var(--brand) 25%, var(--border)); box-shadow: 0 6px 16px rgba(0,0,0,.08); transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(180deg, color-mix(in oklab, var(--brand) 35%, var(--card)) 0%, var(--card) 100%); border-color: color-mix(in oklab, var(--brand) 35%, var(--border)); }
 
-    <title>Stuart Aldrich</title>
+    .photo-card { padding: 10px; display: grid; place-items: center; }
+    .photo { width: 240px; height: 240px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); border: 6px solid var(--card); }
 
-    <!-- favicon from https://oldwindowsicons.tumblr.com/post/745500913078288384/simcity-3000-unlimited-building-architect-icon -->
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    /* Sections */
+    section { padding: 40px 0; }
+    section h2 { font-size: 26px; margin: 0 0 14px; letter-spacing: .2px; }
+    .prose { color: var(--text); }
+    .prose p { margin: 0 0 12px; }
+
+    /* Publications */
+    .pub { display: grid; gap: 14px; padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+    .pub h3 { margin: 0; font-size: 18px; }
+    .pub small { color: var(--muted); }
+
+    /* Projects */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+    @media (max-width: 860px) { .col-6 { grid-column: span 12; } }
+    .project { padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); display: grid; gap: 8px; }
+    .project h3 { margin: 0 0 4px; font-size: 18px; }
+    .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); padding: 4px 8px; border: 1px dashed var(--border); border-radius: 999px; }
+
+    /* Footer */
+    footer { padding: 24px 0 60px; color: var(--muted); }
+
+    /* Skip link */
+    .skip-link { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: static; width: auto; height: auto; padding: 8px 12px; background: var(--brand); color: white; border-radius: 6px; }
+  </style>
 </head>
-
-<body class="pt-serif-regular">
-    <div class="header">
-        <div class="centered">
-            <img id="photo" src="website photo.jpg" alt="Photo of Stuart">
-        </div>
-        <div class="centered">
-            <p id="name">Stuart Aldrich</p>
-        </div>
-        <div class="centered">
-            <a href="mailto:aldrich.s@wustl.edu">aldrich.s@wustl.edu</a>
-        </div>
-        <div class="navbar">
-            <div class="centered">
-                <a href="index.html">Home</a>
-                <a href="projects.html">Projects</a>
-                <a href="publications.html">Publications</a>
-            </div>
-        </div>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="favicon.png" alt="Site logo" />
+        <a href="#top" aria-label="Home">Stuart Aldrich</a>
+      </div>
+      <nav class="links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="mailto:aldrich.s@wustl.edu" style="font-weight:500; color:var(--text); text-decoration:none;">aldrich.s@wustl.edu</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="content centered">
-        <p><b>About me</b></p>
-        <p>
-            I am a second year PhD student in Dr. Umar Iqbal's lab at Washington University in St. Louis. My current
-            research is focused on studying LLM behavior. I am additionally broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real-world problems.
-        </p>
-        <p>
-            Outside of research, I have strong personal interests in robotics and game development, and enjoy working on those topics in my spare time.
-        </p>
-        <p><b>Additional Hyperlinks</b></p>
-        <a href="https://drive.google.com/file/d/1pkZC7LC_EGYhtC26kY8hY4wPjrqQbpYR/view?usp=sharing">
-            curriculum vitae (CV)
-        </a>
-        <a href="https://github.com/sta97">GitHub</a>
-        <a href="https://www.linkedin.com/in/stuart-aldrich-170437207/">LinkedIn</a>
+  <main id="main" class="wrap">
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <div class="hero-inner">
+        <div class="card hero-card">
+          <div class="kicker">Washington University in St. Louis</div>
+          <h1>Stuart Aldrich</h1>
+          <div class="subtitle">Second-year PhD student in Dr. Umar Iqbal's lab • Studying LLM behavior</div>
+          <p class="prose">I’m broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real‑world problems.</p>
+          <div class="actions" role="group" aria-label="Primary actions">
+            <a class="btn primary" href="https://drive.google.com/file/d/1pkZC7LC_EGYhtC26kY8hY4wPjrqQbpYR/view?usp=sharing" target="_blank" rel="noopener" aria-label="View CV">🔗 CV</a>
+            <a class="btn" href="mailto:aldrich.s@wustl.edu">📫 aldrich.s@wustl.edu</a>
+            <a class="btn" href="https://github.com/sta97" target="_blank" rel="noopener" aria-label="GitHub profile">🐙 GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/stuart-aldrich-170437207/" target="_blank" rel="noopener" aria-label="LinkedIn profile">🔗 LinkedIn</a>
+          </div>
+        </div>
+        <div class="card photo-card">
+          <img class="photo" src="website photo.jpg" alt="Portrait of Stuart Aldrich" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="prose card" style="padding:18px">
+        <p>I am a second year PhD student in Dr. Umar Iqbal's lab at Washington University in St. Louis. My current research is focused on studying LLM behavior. I am additionally broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real-world problems.</p>
+        <p>Outside of research, I have strong personal interests in robotics and game development, and enjoy working on those topics in my spare time.</p>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <article class="pub">
+        <h3>
+          <a href="https://ieeexplore.ieee.org/abstract/document/9995448" target="_blank" rel="noopener">Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures</a>
+        </h3>
+        <small>2022 · IEEE · Co-authors: Stuart Aldrich, Micheal Olaolu Arowolo, Fei He, Mihail Popescu, and Dong Xu</small>
+        <p class="prose">Biological pathway figures hold valuable scientific insights, but their complexity makes it difficult for computers to extract the information they contain. We tested leading Optical Character Recognition (OCR) tools to determine which could most accurately identify gene names in these diagrams. Across multiple datasets, Google Cloud Vision and MMOCR emerged as the top performers.</p>
+      </article>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="col-6 col-12">
+          <article class="project">
+            <div class="tag" aria-hidden="true">Personal project</div>
+            <h3><a href="https://roadtripevs.com/" target="_blank" rel="noopener">roadtripevs.com</a></h3>
+            <p class="prose"><em>Your Practical Guide to Electric Road Trips</em></p>
+            <p class="prose">RoadtripEVs is a personal, data-driven resource for finding and comparing EVs optimized for long-distance travel. It estimates charging time as a share of trip duration (10–80% charge) and factors in real-world electricity and gas costs for practical context. While built around my own EV search, it’s designed to help any driver make informed road trip choices.</p>
+            <p><a class="btn" href="https://roadtripevs.com/" target="_blank" rel="noopener" aria-label="Open roadtripevs.com">Visit project ↗</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="card" style="padding:16px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+      <span>© <span id="year"></span> Stuart Aldrich</span>
+      <a href="mailto:aldrich.s@wustl.edu" style="color:inherit; text-decoration:none;">aldrich.s@wustl.edu</a>
     </div>
+  </footer>
 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
 </html>

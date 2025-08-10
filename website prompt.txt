@@ -1,0 +1,54 @@
+Generate a single page static site homepage for me
+
+
+
+Name: Stuart Aldrich
+
+Email: aldrich.s@wustl.edu
+(email should be a mailto link but also fully readable without needing to click link)
+
+Photo of me: website photo.jpg
+
+favicon: favicon.png
+
+Sections:
+About Me
+Publications
+Projects
+
+
+
+Home Content:
+
+I am a second year PhD student in Dr. Umar Iqbal's lab at Washington University in St. Louis. My current research is focused on studying LLM behavior. I am additionally broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real-world problems.
+Outside of research, I have strong personal interests in robotics and game development, and enjoy working on those topics in my spare time.
+
+curriculum vitae (CV) link:
+https://drive.google.com/file/d/1pkZC7LC_EGYhtC26kY8hY4wPjrqQbpYR/view?usp=sharing
+
+github link:
+https://github.com/sta97
+
+LinkedIn link:
+https://www.linkedin.com/in/stuart-aldrich-170437207/
+
+
+
+Publications content:
+
+My first (and currently only) publication is Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures (2022), completed as an undergraduate in Dr. Dong Xu’s lab at the University of Missouri. Co-authors: Stuart Aldrich, Micheal Olaolu Arowolo, Fei He, Mihail Popescu, and Dong Xu.
+
+Publication link: IEEE Xplore (https://ieeexplore.ieee.org/abstract/document/9995448)
+
+Blurb:
+Biological pathway figures hold valuable scientific insights, but their complexity makes it difficult for computers to extract the information they contain. We tested leading Optical Character Recognition (OCR) tools to determine which could most accurately identify gene names in these diagrams. Across multiple datasets, Google Cloud Vision and MMOCR emerged as the top performers.
+
+
+
+Projects content:
+
+roadtripevs.com
+Blurb: Your Practical Guide to Electric Road Trips
+link: https://roadtripevs.com/
+description:
+RoadtripEVs is a personal, data-driven resource for finding and comparing EVs optimized for long-distance travel. It estimates charging time as a share of trip duration (10–80% charge) and factors in real-world electricity and gas costs for practical context. While built around my own EV search, it’s designed to help any driver make informed road trip choices.
