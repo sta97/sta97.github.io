@@ -1,4 +1,4 @@
-Generate a single page static site homepage for me
+Generate a single page static site homepage for me. Make it retro themed. Like Windows 95 or 90's websites.
 
 
 

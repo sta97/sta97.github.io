@@ -3,249 +3,309 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stuart Aldrich | Homepage</title>
-  <meta name="description" content="Homepage of Stuart Aldrich — PhD student at Washington University in St. Louis. LLM behavior, robotics, AI, publications and projects." />
+  <title>Stuart Aldrich — Home</title>
+  <meta name="description" content="Homepage of Stuart Aldrich — PhD student researching LLM behavior, robotics, and AI." />
   <link rel="icon" href="favicon.png" />
-  <meta property="og:title" content="Stuart Aldrich | Homepage" />
-  <meta property="og:description" content="LLM behavior, robotics, and AI — publications and projects." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0f172a" />
   <style>
+    /* --- Win95-ish palette & vibes --- */
     :root{
-      --bg: #0b1220;
-      --panel: #0f172a;
-      --muted: #94a3b8;
-      --text: #e2e8f0;
-      --accent: #60a5fa;
-      --accent-2: #a78bfa;
-      --ring: #334155;
-      --card: #111827;
-      --shadow: 0 10px 30px rgba(2,6,23,.35);
+      --win-bg: #c0c0c0;          /* classic gray */
+      --win-face: #dfdfdf;        /* light face */
+      --win-dark: #808080;        /* dark shadow */
+      --win-darker: #404040;      /* text dark */
+      --win-light: #ffffff;       /* highlight */
+      --win-accent: #000080;      /* title bar blue */
+      --win-accent-2: #1084d0;    /* lighter blue */
+      --link: #0000ee;            /* classic link */
+      --visited: #551a8b;         /* visited link */
+      --focus: #ff9800;           /* focus outline */
     }
-    @media (prefers-color-scheme: light) {
-      :root{
-        --bg: #f8fafc;
-        --panel: #ffffff;
-        --muted: #475569;
-        --text: #0f172a;
-        --accent: #2563eb;
-        --accent-2: #6d28d9;
-        --ring: #e2e8f0;
-        --card: #ffffff;
-        --shadow: 0 10px 30px rgba(15,23,42,.08);
-      }
+
+    html, body{
+      height: 100%;
+      background: var(--win-bg);
+      margin: 0;
+      color: #000;
+      font-family: "MS Sans Serif", Tahoma, Verdana, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      image-rendering: pixelated;
     }
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(99,102,241,.15), transparent 60%),
-                  radial-gradient(1200px 800px at -10% 20%, rgba(37,99,235,.12), transparent 60%),
-                  var(--bg);
-      color: var(--text);
+
+    a{ color: var(--link); }
+    a:visited{ color: var(--visited); }
+    a:focus{ outline: 2px dashed var(--focus); outline-offset: 2px; }
+
+    /* Desktop container */
+    .desktop{
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
     }
-    a{color:var(--accent); text-decoration: none}
-    a:hover{text-decoration: underline}
+
+    /* Title marquee */
+    .marquee-bar{
+      background: linear-gradient(90deg, var(--win-accent), var(--win-accent-2));
+      color: #fff;
+      padding: 6px 10px;
+      border-bottom: 2px solid var(--win-darker);
+      text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .marquee-bar .lamp{ width: 10px; height: 10px; background: #3cff66; box-shadow: 0 0 6px #3cff66; border-radius: 50%; }
+    marquee{ font-size: 14px; }
+
+    /* Window chrome */
+    .window{
+      background: var(--win-face);
+      border: 2px solid var(--win-dark);
+      border-right-color: var(--win-light);
+      border-bottom-color: var(--win-light);
+      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+      margin: 12px;
+    }
+    .titlebar{
+      background: linear-gradient(90deg, var(--win-accent), var(--win-accent-2));
+      color: #fff;
+      padding: 6px 8px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .titlebar .controls{
+      display: flex; gap: 4px;
+    }
+    .btn-ctrl{
+      width: 18px; height: 18px; background: var(--win-face);
+      border: 2px solid var(--win-dark);
+      border-right-color: var(--win-light);
+      border-bottom-color: var(--win-light);
+      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+      display: grid; place-items: center;
+      font-size: 10px; line-height: 1; color: #000;
+    }
+
+    .window .content{ padding: 16px; }
 
     /* Layout */
-    .container{max-width: 1000px; margin-inline:auto; padding: 0 20px}
-    header{
-      position: sticky; top: 0; z-index: 40; backdrop-filter: blur(8px);
-      background: color-mix(in oklab, var(--panel) 70%, transparent);
-      border-bottom: 1px solid var(--ring);
+    .main{
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 12px;
+      padding: 12px;
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 14px 0}
-    .brand{display:flex; align-items:center; gap:12px}
-    .brand img{width:34px; height:34px; border-radius:8px}
-    .brand .name{font-weight:700; letter-spacing:.2px}
-    .nav a{color:var(--text)}
-    .nav .links{display:flex; gap:18px; align-items:center}
-    .nav .links a{opacity:.85}
-    .nav .links a:hover{opacity:1}
-    .mobile-toggle{display:none; border:1px solid var(--ring); background:transparent; color:var(--text); padding:8px 10px; border-radius:12px}
-
-    /* Hero */
-    .hero{padding: 56px 0 28px}
-    .hero-inner{display:grid; grid-template-columns: 140px 1fr; gap:24px; align-items:center}
-    .avatar{width:140px; height:140px; border-radius:24px; object-fit:cover; box-shadow: var(--shadow); border:1px solid var(--ring); background:var(--card)}
-    .title{font-size: clamp(26px, 2.2vw + 16px, 44px); line-height:1.05; margin:0}
-    .subtitle{margin:8px 0 0; color: var(--muted)}
-    .quick{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
-    .pill{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid var(--ring); border-radius:999px; background: color-mix(in oklab, var(--panel) 86%, transparent); box-shadow: var(--shadow)}
-    .pill strong{font-weight:600}
-
-    /* Sections */
-    section{padding: 28px 0}
-    .section-title{font-size:22px; margin:0 0 14px}
-    .card{border:1px solid var(--ring); background: color-mix(in oklab, var(--panel) 92%, transparent); border-radius:24px; box-shadow: var(--shadow)}
-    .card-inner{padding:20px}
-
-    /* Publications */
-    .pub{display:grid; grid-template-columns: 1fr; gap:10px}
-    .pub-cite{font-size:15px}
-    .pub-meta{display:flex; flex-wrap:wrap; gap:12px; align-items:center; font-size:14px; color:var(--muted)}
-    .keywords{display:flex; flex-wrap:wrap; gap:8px; margin-top:4px}
-    .tag{border:1px dashed var(--ring); padding:4px 10px; border-radius:999px; font-size:12px; opacity:.9}
-
-    /* Projects */
-    .projects{display:grid; grid-template-columns: repeat( auto-fit, minmax(260px, 1fr) ); gap:16px}
-    .project{display:flex; flex-direction:column; gap:10px}
-    .project h3{margin:0}
-    .ext{display:inline-flex; align-items:center; gap:8px}
-
-    /* Footer */
-    footer{padding:36px 0 56px; color:var(--muted)}
-
-    @media (max-width: 720px){
-      .hero-inner{grid-template-columns: 1fr; text-align:center}
-      .avatar{margin-inline:auto}
-      .nav .links{display:none}
-      .mobile-toggle{display:inline-flex}
-      .menu{display:none; flex-direction:column; gap:10px; padding:12px 0}
-      .menu a{padding:10px 12px; border:1px solid var(--ring); border-radius:12px; background: color-mix(in oklab, var(--panel) 86%, transparent)}
+    @media (max-width: 860px){
+      .main{ grid-template-columns: 1fr; }
     }
+
+    /* Sidebar (Profile card) */
+    .card{
+      background: var(--win-face);
+      border: 2px solid var(--win-dark);
+      border-right-color: var(--win-light);
+      border-bottom-color: var(--win-light);
+      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+    }
+
+    .profile{
+      padding: 14px;
+      text-align: center;
+    }
+    .avatar{
+      width: 160px; height: 160px; object-fit: cover; object-position: center;
+      border: 2px solid var(--win-dark);
+      border-right-color: var(--win-light);
+      border-bottom-color: var(--win-light);
+      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+      background: #fff;
+    }
+    .name{ font-size: 20px; font-weight: 800; margin: 10px 0 4px; color: var(--win-darker); }
+    .email{
+      font-size: 14px;
+      word-break: break-word;
+    }
+    .nav{
+      margin-top: 14px; padding: 10px;
+      display: grid; gap: 8px;
+    }
+
+    .nav a{
+      text-decoration: none;
+      color: #000;
+      background: var(--win-face);
+      padding: 8px 10px;
+      border: 2px solid var(--win-dark);
+      border-right-color: var(--win-light);
+      border-bottom-color: var(--win-light);
+      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+      font-weight: 700;
+    }
+    .nav a:hover{ filter: brightness(0.98); }
+
+    /* Section content */
+    section + section{ margin-top: 12px; }
+    h2{
+      margin: 0 0 10px 0;
+      font-size: 18px; color: #fff; font-weight: 800;
+    }
+    .body p{ line-height: 1.45; }
+
+    .btn{
+      display: inline-block; text-decoration: none; color: #000; font-weight: 700;
+      padding: 8px 12px; margin-right: 8px; margin-top: 6px;
+      background: var(--win-face);
+      border: 2px solid var(--win-dark);
+      border-right-color: var(--win-light);
+      border-bottom-color: var(--win-light);
+      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+    }
+
+    .statusbar{
+      display: flex; gap: 10px; align-items: center; justify-content: space-between;
+      font-size: 12px; padding: 6px 10px; background: var(--win-face);
+      border-top: 2px solid var(--win-dark);
+      border-left: 2px solid var(--win-dark);
+      border-right: 2px solid var(--win-light);
+      border-bottom: 2px solid var(--win-light);
+    }
+
+    /* Publisher-like lists */
+    .pub-item, .project-item{
+      padding: 10px; margin-bottom: 10px; background: #fff;
+      border: 2px solid var(--win-dark);
+      border-right-color: var(--win-light);
+      border-bottom-color: var(--win-light);
+      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+    }
+    .pub-meta, .project-meta{ font-size: 12px; color: #333; }
+    .keywords{ font-size: 11px; color: #333; }
+
+    /* Skip link for a11y */
+    .skip{
+      position: absolute; left: -9999px;
+    }
+    .skip:focus{ left: 10px; top: 10px; background: #fff; padding: 6px; z-index: 1000; }
+
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav class="nav" aria-label="Primary">
-        <div class="brand">
-          <img src="favicon.png" alt="SA logo" />
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="desktop">
+    <div class="marquee-bar" role="banner">
+      <span class="lamp" aria-hidden="true"></span>
+      <marquee behavior="scroll" direction="left" scrollamount="4" aria-label="Welcome message">
+        Welcome to Stuart Aldrich's retro homepage — forged in the spirit of the 90s! ★
+      </marquee>
+    </div>
+
+    <div class="main" id="main">
+      <!-- Sidebar -->
+      <aside class="card" aria-label="Profile">
+        <div class="profile">
+          <img class="avatar" src="website photo.jpg" alt="Portrait of Stuart Aldrich" width="160" height="160" />
           <div class="name">Stuart Aldrich</div>
+          <div class="email">
+            Email: <a href="mailto:aldrich.s@wustl.edu">aldrich.s@wustl.edu</a>
+          </div>
+          <div style="margin-top:8px;">
+            <a class="btn" href="https://drive.google.com/file/d/1pkZC7LC_EGYhtC26kY8hY4wPjrqQbpYR/view?usp=sharing" target="_blank" rel="noopener">View CV</a>
+            <a class="btn" href="https://github.com/sta97" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/stuart-aldrich-170437207/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
-        <div class="links" role="menubar">
-          <a role="menuitem" href="#about">About</a>
-          <a role="menuitem" href="#publications">Publications</a>
-          <a role="menuitem" href="#projects">Projects</a>
-          <a role="menuitem" href="#contact">Contact</a>
-        </div>
-        <button class="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" id="navToggle">Menu</button>
-      </nav>
-      <div id="mobile-menu" class="menu container">
-        <a href="#about" onclick="closeMenu()">About</a>
-        <a href="#publications" onclick="closeMenu()">Publications</a>
-        <a href="#projects" onclick="closeMenu()">Projects</a>
-        <a href="#contact" onclick="closeMenu()">Contact</a>
-      </div>
-    </div>
-  </header>
+        <nav class="nav" aria-label="Section navigation">
+          <a href="#about">▶ About Me</a>
+          <a href="#publications">▶ Publications</a>
+          <a href="#projects">▶ Projects</a>
+        </nav>
+      </aside>
 
-  <main class="container">
-    <!-- Hero / Intro -->
-    <section class="hero" id="home">
-      <div class="hero-inner">
-        <img class="avatar" src="website photo.jpg" alt="Photo of Stuart Aldrich" />
-        <div>
-          <h1 class="title">Hi, I'm Stuart Aldrich</h1>
-          <p class="subtitle">PhD student @ WashU | LLM behavior • Robotics • AI</p>
-          <div class="quick">
-            <a class="pill" href="mailto:aldrich.s@wustl.edu" aria-label="Email Stuart Aldrich">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z" opacity=".15"></path><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>
-              <strong>aldrich.s@wustl.edu</strong>
-            </a>
-            <a class="pill" href="https://drive.google.com/file/d/1pkZC7LC_EGYhtC26kY8hY4wPjrqQbpYR/view?usp=sharing" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>
-              CV
-            </a>
-            <a class="pill" href="https://github.com/sta97" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.1-.76.09-.74.09-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.3-5.47-1.33-5.47-5.9 0-1.3.47-2.36 1.25-3.19-.13-.31-.54-1.57.12-3.29 0 0 1.01-.32 3.3 1.22a11.48 11.48 0 0 1 6 0c2.29-1.54 3.3-1.22 3.3-1.22.66 1.72.25 2.98.12 3.29.78.83 1.25 1.89 1.25 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
-              GitHub
-            </a>
-            <a class="pill" href="https://www.linkedin.com/in/stuart-aldrich-170437207/" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4zM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.76-2.2 4.02 0 4.76 2.65 4.76 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.76 1.87-2.76 3.8V24h-4z"/></svg>
-              LinkedIn
-            </a>
+      <!-- Content area -->
+      <div>
+        <!-- About -->
+        <div class="window" id="about" role="region" aria-labelledby="about-title">
+          <div class="titlebar">
+            <h2 id="about-title">About Me</h2>
+            <div class="controls" aria-hidden="true">
+              <div class="btn-ctrl">_</div>
+              <div class="btn-ctrl">□</div>
+              <div class="btn-ctrl">×</div>
+            </div>
+          </div>
+          <div class="content body">
+            <p>I am a second year PhD student in Dr. Umar Iqbal's lab at Washington University in St. Louis. My current research is focused on studying LLM behavior. I am additionally broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real-world problems.</p>
+            <p>Outside of research, I have strong personal interests in robotics and game development, and enjoy working on those topics in my spare time.</p>
+          </div>
+        </div>
+
+        <!-- Publications -->
+        <div class="window" id="publications" role="region" aria-labelledby="pubs-title">
+          <div class="titlebar">
+            <h2 id="pubs-title">Publications</h2>
+            <div class="controls" aria-hidden="true">
+              <div class="btn-ctrl">_</div>
+              <div class="btn-ctrl">□</div>
+              <div class="btn-ctrl">×</div>
+            </div>
+          </div>
+          <div class="content body">
+            <article class="pub-item">
+              <div class="pub-main">
+                <strong>S. Aldrich</strong>, M. O. Arowolo, F. He, M. Popescu and D. Xu, "Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures," <em>2022 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)</em>, Las Vegas, NV, USA, 2022, pp. 3574-3579, doi: 10.1109/BIBM55620.2022.9995448.
+              </div>
+              <div class="pub-meta">Publication link: <a href="https://ieeexplore.ieee.org/abstract/document/9995448" target="_blank" rel="noopener">IEEE Xplore</a></div>
+              <p class="keywords"><strong>Keywords:</strong> Visualization; Image recognition; Sensitivity; Limiting; Text recognition; Biological system modeling; Optical character recognition; OCR; Optical Character Recognition; Gene; Biological Pathway; Biomedical Literature Mining; Name Recognition</p>
+              <p><strong>Blurb:</strong> Biological pathway figures hold valuable scientific insights, but their complexity makes it difficult for computers to extract the information they contain. We tested leading Optical Character Recognition (OCR) tools to determine which could most accurately identify gene names in these diagrams. Across multiple datasets, Google Cloud Vision and MMOCR emerged as the top performers.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="window" id="projects" role="region" aria-labelledby="projects-title">
+          <div class="titlebar">
+            <h2 id="projects-title">Projects</h2>
+            <div class="controls" aria-hidden="true">
+              <div class="btn-ctrl">_</div>
+              <div class="btn-ctrl">□</div>
+              <div class="btn-ctrl">×</div>
+            </div>
+          </div>
+          <div class="content body">
+            <article class="project-item">
+              <div class="project-main">
+                <strong>roadtripevs.com</strong> — <em>Your Practical Guide to Electric Road Trips</em>
+              </div>
+              <div class="project-meta">Link: <a href="https://roadtripevs.com/" target="_blank" rel="noopener">https://roadtripevs.com/</a></div>
+              <p><strong>Description:</strong> RoadtripEVs is a personal, data-driven resource for finding and comparing EVs optimized for long-distance travel. It estimates charging time as a share of trip duration (10–80% charge) and factors in real-world electricity and gas costs for practical context. While built around my own EV search, it’s designed to help any driver make informed road trip choices.</p>
+            </article>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="card"><div class="card-inner">
-        <p>I am a second year PhD student in Dr. Umar Iqbal's lab at Washington University in St. Louis. My current research is focused on studying LLM behavior. I am additionally broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real-world problems.</p>
-        <p>Outside of research, I have strong personal interests in robotics and game development, and enjoy working on those topics in my spare time.</p>
-      </div></div>
-    </section>
-
-    <!-- Publications -->
-    <section id="publications">
-      <h2 class="section-title">Publications</h2>
-      <div class="card"><div class="card-inner pub">
-        <div class="pub-cite">
-          S. Aldrich, M. O. Arowolo, F. He, M. Popescu and D. Xu, "<em>Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures</em>," <strong>2022 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)</strong>, Las Vegas, NV, USA, 2022, pp. 3574–3579. DOI: <a href="https://doi.org/10.1109/BIBM55620.2022.9995448" target="_blank" rel="noopener">10.1109/BIBM55620.2022.9995448</a>.
-        </div>
-        <div class="pub-meta">
-          <a class="ext" href="https://ieeexplore.ieee.org/abstract/document/9995448" target="_blank" rel="noopener" aria-label="Open on IEEE Xplore">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-            IEEE Xplore
-          </a>
-        </div>
-        <p><strong>Blurb.</strong> Biological pathway figures hold valuable scientific insights, but their complexity makes it difficult for computers to extract the information they contain. We tested leading Optical Character Recognition (OCR) tools to determine which could most accurately identify gene names in these diagrams. Across multiple datasets, Google Cloud Vision and MMOCR emerged as the top performers.</p>
-        <div class="keywords" aria-label="keywords">
-          <span class="tag">Visualization</span>
-          <span class="tag">Image recognition</span>
-          <span class="tag">Sensitivity</span>
-          <span class="tag">Limiting</span>
-          <span class="tag">Text recognition</span>
-          <span class="tag">Biological system modeling</span>
-          <span class="tag">Optical character recognition</span>
-          <span class="tag">OCR</span>
-          <span class="tag">Optical Character Recognition</span>
-          <span class="tag">Gene</span>
-          <span class="tag">Biological Pathway</span>
-          <span class="tag">Biomedical Literature Mining</span>
-          <span class="tag">Name Recognition</span>
-        </div>
-      </div></div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects">
-        <article class="card project">
-          <div class="card-inner">
-            <h3><a class="ext" href="https://roadtripevs.com/" target="_blank" rel="noopener">RoadtripEVs.com</a></h3>
-            <p class="muted">Your Practical Guide to Electric Road Trips</p>
-            <p>RoadtripEVs is a personal, data-driven resource for finding and comparing EVs optimized for long-distance travel. It estimates charging time as a share of trip duration (10–80% charge) and factors in real-world electricity and gas costs for practical context. While built around my own EV search, it’s designed to help any driver make informed road trip choices.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="card"><div class="card-inner">
-        <p>Email: <a href="mailto:aldrich.s@wustl.edu">aldrich.s@wustl.edu</a></p>
-        <p>Also find me on <a href="https://github.com/sta97" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.linkedin.com/in/stuart-aldrich-170437207/" target="_blank" rel="noopener">LinkedIn</a>.</p>
-      </div></div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px">
-        <small>© <span id="year"></span> Stuart Aldrich</small>
-        <small><a href="#home">Back to top ↑</a></small>
-      </div>
     </div>
-  </footer>
+
+    <footer class="statusbar" role="contentinfo">
+      <div>© <span id="year"></span> Stuart Aldrich</div>
+      <div>Best viewed on a CRT 🤓</div>
+    </footer>
+  </div>
 
   <script>
-    // Live year
+    // Set year dynamically (keeps file evergreen)
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile menu toggle
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobile-menu');
-    function closeMenu(){ menu.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); }
-    toggle?.addEventListener('click', () => {
-      const open = menu.style.display === 'flex';
-      menu.style.display = open ? 'none' : 'flex';
-      toggle.setAttribute('aria-expanded', String(!open));
+    // Optional: smooth scroll for anchor links (kept tiny & retro-safe)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   </script>
 </body>
