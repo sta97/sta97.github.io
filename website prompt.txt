@@ -36,7 +36,7 @@ https://www.linkedin.com/in/stuart-aldrich-170437207/
 
 Publications content:
 
-My first (and currently only) publication is Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures (2022), completed as an undergraduate in Dr. Dong Xu’s lab at the University of Missouri. Co-authors: Stuart Aldrich, Micheal Olaolu Arowolo, Fei He, Mihail Popescu, and Dong Xu.
+S. Aldrich, M. O. Arowolo, F. He, M. Popescu and D. Xu, "Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures," 2022 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Las Vegas, NV, USA, 2022, pp. 3574-3579, doi: 10.1109/BIBM55620.2022.9995448. keywords: {Visualization;Image recognition;Sensitivity;Limiting;Text recognition;Biological system modeling;Optical character recognition;OCR;Optical Character Recognition;Gene;Biological Pathway;Biomedical Literature Mining;Name Recognition},
 
 Publication link: IEEE Xplore (https://ieeexplore.ieee.org/abstract/document/9995448)
 
