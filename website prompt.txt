@@ -1,4 +1,4 @@
-Generate a single page static site homepage for me. Make it retro themed. Like Windows 95 or 90's websites.
+Given the following content and a template, create a single page website.
 
 
 
@@ -52,3 +52,158 @@ Blurb: Your Practical Guide to Electric Road Trips
 link: https://roadtripevs.com/
 description:
 RoadtripEVs is a personal, data-driven resource for finding and comparing EVs optimized for long-distance travel. It estimates charging time as a share of trip duration (10–80% charge) and factors in real-world electricity and gas costs for practical context. While built around my own EV search, it’s designed to help any driver make informed road trip choices.
+
+commacars.com  
+Blurb: Exploring Cars That Work with openpilot  
+link: https://commacars.com/  
+description:  
+CommaCars is a reference site built around the openpilot comma 3x ecosystem. Instead of focusing on every vehicle on the market, it narrows in on those officially supported by Comma.ai’s driver-assistance platform, making it easier to see what’s realistically compatible today. The site also surfaces estimated resale pricing to give shoppers a ballpark sense of cost, with clear reminders to verify numbers through sources like Edmunds, KBB, NADA, or TrueCar. The goal isn’t to replace deep research, but to give drivers a quick starting point when considering whether their next car could work with openpilot.
+
+
+
+template:
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jane Doe — Personal Homepage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Frutiger", "Helvetica Neue", sans-serif;
+      background: linear-gradient(180deg, #e8fbff 0%, #f5fffb 100%);
+      background-attachment: fixed;
+      color: #222;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('background.png') center/100% 100% no-repeat;
+      filter: blur(8px);
+      opacity: 0.35;
+      z-index: -1;
+    }
+
+    .hero-card {
+      display: inline-block;
+      padding: 40px 60px;
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+      background: linear-gradient(90deg, #23c4cc, #2fb7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-weight: 400;
+      color: #444;
+    }
+
+    .btn {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(to bottom, #2fb7ff, #23c4cc);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(to bottom, rgba(255,255,255,.6), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero-card">
+      <h1>Jane Doe</h1>
+      <h2>Designer • Coder • Nature Enthusiast</h2>
+      <a href="#about" class="btn">Learn More</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="card">
+      <h2>About Me</h2>
+      <p>Hello! I’m Jane, a designer and developer who loves blending technology with nature-inspired aesthetics. When I’m not coding, you’ll find me sketching outdoors or hiking with my camera.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="card">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>EcoUI:</strong> A design system inspired by organic forms and gradients.</li>
+        <li><strong>GlassBoard:</strong> A collaborative app with a skeuomorphic glassy interface.</li>
+        <li><strong>SkyLens:</strong> A photography portfolio showcasing clouds and skylines.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="card">
+      <h2>Get in Touch</h2>
+      <p>Email me at <a href="mailto:jane@example.com">jane@example.com</a> or connect with me on <a href="#">LinkedIn</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Jane Doe — Built with a touch of Frutiger Aero ✨
+  </footer>
+</body>
+</html>

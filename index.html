@@ -1,312 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stuart Aldrich — Home</title>
-  <meta name="description" content="Homepage of Stuart Aldrich — PhD student researching LLM behavior, robotics, and AI." />
-  <link rel="icon" href="favicon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stuart Aldrich — Personal Homepage</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
   <style>
-    /* --- Win95-ish palette & vibes --- */
-    :root{
-      --win-bg: #c0c0c0;          /* classic gray */
-      --win-face: #dfdfdf;        /* light face */
-      --win-dark: #808080;        /* dark shadow */
-      --win-darker: #404040;      /* text dark */
-      --win-light: #ffffff;       /* highlight */
-      --win-accent: #000080;      /* title bar blue */
-      --win-accent-2: #1084d0;    /* lighter blue */
-      --link: #0000ee;            /* classic link */
-      --visited: #551a8b;         /* visited link */
-      --focus: #ff9800;           /* focus outline */
-    }
-
-    html, body{
-      height: 100%;
-      background: var(--win-bg);
+    body {
       margin: 0;
-      color: #000;
-      font-family: "MS Sans Serif", Tahoma, Verdana, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      image-rendering: pixelated;
+      font-family: "Segoe UI", "Frutiger", "Helvetica Neue", sans-serif;
+      background: linear-gradient(180deg, #e8fbff 0%, #f5fffb 100%);
+      background-attachment: fixed;
+      color: #222;
     }
 
-    a{ color: var(--link); }
-    a:visited{ color: var(--visited); }
-    a:focus{ outline: 2px dashed var(--focus); outline-offset: 2px; }
-
-    /* Desktop container */
-    .desktop{
-      min-height: 100dvh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-    }
-
-    /* Title marquee */
-    .marquee-bar{
-      background: linear-gradient(90deg, var(--win-accent), var(--win-accent-2));
-      color: #fff;
-      padding: 6px 10px;
-      border-bottom: 2px solid var(--win-darker);
-      text-shadow: 1px 1px 0 rgba(0,0,0,.3);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .marquee-bar .lamp{ width: 10px; height: 10px; background: #3cff66; box-shadow: 0 0 6px #3cff66; border-radius: 50%; }
-    marquee{ font-size: 14px; }
-
-    /* Window chrome */
-    .window{
-      background: var(--win-face);
-      border: 2px solid var(--win-dark);
-      border-right-color: var(--win-light);
-      border-bottom-color: var(--win-light);
-      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
-      margin: 12px;
-    }
-    .titlebar{
-      background: linear-gradient(90deg, var(--win-accent), var(--win-accent-2));
-      color: #fff;
-      padding: 6px 8px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      user-select: none;
-    }
-    .titlebar .controls{
-      display: flex; gap: 4px;
-    }
-    .btn-ctrl{
-      width: 18px; height: 18px; background: var(--win-face);
-      border: 2px solid var(--win-dark);
-      border-right-color: var(--win-light);
-      border-bottom-color: var(--win-light);
-      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
-      display: grid; place-items: center;
-      font-size: 10px; line-height: 1; color: #000;
-    }
-
-    .window .content{ padding: 16px; }
-
-    /* Layout */
-    .main{
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 12px;
-      padding: 12px;
-    }
-    @media (max-width: 860px){
-      .main{ grid-template-columns: 1fr; }
-    }
-
-    /* Sidebar (Profile card) */
-    .card{
-      background: var(--win-face);
-      border: 2px solid var(--win-dark);
-      border-right-color: var(--win-light);
-      border-bottom-color: var(--win-light);
-      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
-    }
-
-    .profile{
-      padding: 14px;
+    header {
       text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
     }
-    .avatar{
-      width: 160px; height: 160px; object-fit: cover; object-position: center;
-      border: 2px solid var(--win-dark);
-      border-right-color: var(--win-light);
-      border-bottom-color: var(--win-light);
-      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('background.png') center/100% 100% no-repeat;
+      filter: blur(8px);
+      opacity: 0.35;
+      z-index: -1;
+    }
+
+    .hero-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      padding: 32px 40px;
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      text-align: left;
+    }
+
+    .hero-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.85);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
       background: #fff;
     }
-    .name{ font-size: 20px; font-weight: 800; margin: 10px 0 4px; color: var(--win-darker); }
-    .email{
-      font-size: 14px;
-      word-break: break-word;
-    }
-    .nav{
-      margin-top: 14px; padding: 10px;
-      display: grid; gap: 8px;
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      margin: 0 0 6px;
+      background: linear-gradient(90deg, #23c4cc, #2fb7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .nav a{
+    .hero-text h2 {
+      margin: 0 0 10px;
+      font-weight: 500;
+      color: #444;
+      font-size: 1.1rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(to bottom, #2fb7ff, #23c4cc);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       text-decoration: none;
-      color: #000;
-      background: var(--win-face);
-      padding: 8px 10px;
-      border: 2px solid var(--win-dark);
-      border-right-color: var(--win-light);
-      border-bottom-color: var(--win-light);
-      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
-      font-weight: 700;
-    }
-    .nav a:hover{ filter: brightness(0.98); }
-
-    /* Section content */
-    section + section{ margin-top: 12px; }
-    h2{
-      margin: 0 0 10px 0;
-      font-size: 18px; color: #fff; font-weight: 800;
-    }
-    .body p{ line-height: 1.45; }
-
-    .btn{
-      display: inline-block; text-decoration: none; color: #000; font-weight: 700;
-      padding: 8px 12px; margin-right: 8px; margin-top: 6px;
-      background: var(--win-face);
-      border: 2px solid var(--win-dark);
-      border-right-color: var(--win-light);
-      border-bottom-color: var(--win-light);
-      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+      position: relative;
     }
 
-    .statusbar{
-      display: flex; gap: 10px; align-items: center; justify-content: space-between;
-      font-size: 12px; padding: 6px 10px; background: var(--win-face);
-      border-top: 2px solid var(--win-dark);
-      border-left: 2px solid var(--win-dark);
-      border-right: 2px solid var(--win-light);
-      border-bottom: 2px solid var(--win-light);
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(to bottom, rgba(255,255,255,.6), rgba(255,255,255,0));
+      pointer-events: none;
     }
 
-    /* Publisher-like lists */
-    .pub-item, .project-item{
-      padding: 10px; margin-bottom: 10px; background: #fff;
-      border: 2px solid var(--win-dark);
-      border-right-color: var(--win-light);
-      border-bottom-color: var(--win-light);
-      box-shadow: inset -1px -1px 0 var(--win-dark), inset 1px 1px 0 var(--win-light);
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
-    .pub-meta, .project-meta{ font-size: 12px; color: #333; }
-    .keywords{ font-size: 11px; color: #333; }
 
-    /* Skip link for a11y */
-    .skip{
-      position: absolute; left: -9999px;
+    nav a { color: #0b6fa4; text-decoration: none; font-weight: 600; }
+
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
-    .skip:focus{ left: 10px; top: 10px; background: #fff; padding: 6px; z-index: 1000; }
 
+    .card {
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .pub-item + .pub-item { margin-top: 16px; }
+    .pub-title { font-weight: 600; }
+    .pub-meta { color: #444; font-size: 0.95rem; }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px dashed rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.55);
+    }
+
+    .project h3 { margin: 0; }
+    .project p { margin: 0; }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    @media (min-width: 700px) {
+      .project { grid-template-columns: 2fr 5fr; }
+    }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="desktop">
-    <div class="marquee-bar" role="banner">
-      <span class="lamp" aria-hidden="true"></span>
-      <marquee behavior="scroll" direction="left" scrollamount="4" aria-label="Welcome message">
-        Welcome to Stuart Aldrich's retro homepage — forged in the spirit of the 90s! ★
-      </marquee>
-    </div>
-
-    <div class="main" id="main">
-      <!-- Sidebar -->
-      <aside class="card" aria-label="Profile">
-        <div class="profile">
-          <img class="avatar" src="website photo.jpg" alt="Portrait of Stuart Aldrich" width="160" height="160" />
-          <div class="name">Stuart Aldrich</div>
-          <div class="email">
-            Email: <a href="mailto:aldrich.s@wustl.edu">aldrich.s@wustl.edu</a>
-          </div>
-          <div style="margin-top:8px;">
-            <a class="btn" href="https://drive.google.com/file/d/1pkZC7LC_EGYhtC26kY8hY4wPjrqQbpYR/view?usp=sharing" target="_blank" rel="noopener">View CV</a>
-            <a class="btn" href="https://github.com/sta97" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/stuart-aldrich-170437207/" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-        <nav class="nav" aria-label="Section navigation">
-          <a href="#about">▶ About Me</a>
-          <a href="#publications">▶ Publications</a>
-          <a href="#projects">▶ Projects</a>
-        </nav>
-      </aside>
-
-      <!-- Content area -->
-      <div>
-        <!-- About -->
-        <div class="window" id="about" role="region" aria-labelledby="about-title">
-          <div class="titlebar">
-            <h2 id="about-title">About Me</h2>
-            <div class="controls" aria-hidden="true">
-              <div class="btn-ctrl">_</div>
-              <div class="btn-ctrl">□</div>
-              <div class="btn-ctrl">×</div>
-            </div>
-          </div>
-          <div class="content body">
-            <p>I am a second year PhD student in Dr. Umar Iqbal's lab at Washington University in St. Louis. My current research is focused on studying LLM behavior. I am additionally broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real-world problems.</p>
-            <p>Outside of research, I have strong personal interests in robotics and game development, and enjoy working on those topics in my spare time.</p>
-          </div>
-        </div>
-
-        <!-- Publications -->
-        <div class="window" id="publications" role="region" aria-labelledby="pubs-title">
-          <div class="titlebar">
-            <h2 id="pubs-title">Publications</h2>
-            <div class="controls" aria-hidden="true">
-              <div class="btn-ctrl">_</div>
-              <div class="btn-ctrl">□</div>
-              <div class="btn-ctrl">×</div>
-            </div>
-          </div>
-          <div class="content body">
-            <article class="pub-item">
-              <div class="pub-main">
-                <strong>S. Aldrich</strong>, M. O. Arowolo, F. He, M. Popescu and D. Xu, "Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures," <em>2022 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)</em>, Las Vegas, NV, USA, 2022, pp. 3574-3579, doi: 10.1109/BIBM55620.2022.9995448.
-              </div>
-              <div class="pub-meta">Publication link: <a href="https://ieeexplore.ieee.org/abstract/document/9995448" target="_blank" rel="noopener">IEEE Xplore</a></div>
-              <p class="keywords"><strong>Keywords:</strong> Visualization; Image recognition; Sensitivity; Limiting; Text recognition; Biological system modeling; Optical character recognition; OCR; Optical Character Recognition; Gene; Biological Pathway; Biomedical Literature Mining; Name Recognition</p>
-              <p><strong>Blurb:</strong> Biological pathway figures hold valuable scientific insights, but their complexity makes it difficult for computers to extract the information they contain. We tested leading Optical Character Recognition (OCR) tools to determine which could most accurately identify gene names in these diagrams. Across multiple datasets, Google Cloud Vision and MMOCR emerged as the top performers.</p>
-            </article>
-          </div>
-        </div>
-
-        <!-- Projects -->
-        <div class="window" id="projects" role="region" aria-labelledby="projects-title">
-          <div class="titlebar">
-            <h2 id="projects-title">Projects</h2>
-            <div class="controls" aria-hidden="true">
-              <div class="btn-ctrl">_</div>
-              <div class="btn-ctrl">□</div>
-              <div class="btn-ctrl">×</div>
-            </div>
-          </div>
-          <div class="content body">
-            <article class="project-item">
-              <div class="project-main">
-                <strong>roadtripevs.com</strong> — <em>Your Practical Guide to Electric Road Trips</em>
-              </div>
-              <div class="project-meta">Link: <a href="https://roadtripevs.com/" target="_blank" rel="noopener">https://roadtripevs.com/</a></div>
-              <p><strong>Description:</strong> RoadtripEVs is a personal, data-driven resource for finding and comparing EVs optimized for long-distance travel. It estimates charging time as a share of trip duration (10–80% charge) and factors in real-world electricity and gas costs for practical context. While built around my own EV search, it’s designed to help any driver make informed road trip choices.</p>
-            </article>
-          </div>
+  <header>
+    <div class="hero-card">
+      <img class="hero-photo" src="website%20photo.jpg" alt="Portrait of Stuart Aldrich" />
+      <div class="hero-text">
+        <h1>Stuart Aldrich</h1>
+        <h2>PhD Student @ WashU • Studying LLM Behavior • Robotics & AI</h2>
+        <div class="links">
+          <a class="btn" href="#about" aria-label="Skip to About section">Learn More</a>
+          <a class="btn" href="https://drive.google.com/file/d/1pkZC7LC_EGYhtC26kY8hY4wPjrqQbpYR/view?usp=sharing" target="_blank" rel="noopener">CV</a>
+          <a class="btn" href="https://github.com/sta97" target="_blank" rel="noopener me">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/stuart-aldrich-170437207/" target="_blank" rel="noopener me">LinkedIn</a>
         </div>
       </div>
     </div>
+  </header>
 
-    <footer class="statusbar" role="contentinfo">
-      <div>© <span id="year"></span> Stuart Aldrich</div>
-      <div>Best viewed on a CRT 🤓</div>
-    </footer>
-  </div>
+  <nav aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#projects">Projects</a>
+  </nav>
+
+  <section id="about">
+    <div class="card">
+      <h2>About Me</h2>
+      <p>I am a second year PhD student in Dr. Umar Iqbal's lab at Washington University in St. Louis. My current research is focused on studying LLM behavior. I am additionally broadly interested in robotics and artificial intelligence, and how we can make more intelligent machines to help us solve real-world problems.</p>
+      <p>Outside of research, I have strong personal interests in robotics and game development, and enjoy working on those topics in my spare time.</p>
+      <p><strong>Email:</strong> <a href="mailto:aldrich.s@wustl.edu">aldrich.s@wustl.edu</a> — aldrich.s@wustl.edu</p>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="card">
+      <h2>Publications</h2>
+
+      <div class="pub-item">
+        <div class="pub-title">Comprehensive Assessment of OCR Tools for Gene Name Recognition in Biological Pathway Figures</div>
+        <div class="pub-meta">S. Aldrich, M. O. Arowolo, F. He, M. Popescu and D. Xu. 2022 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Las Vegas, NV, USA, 2022, pp. 3574–3579. DOI: 10.1109/BIBM55620.2022.9995448.</div>
+        <p><em>Keywords:</em> Visualization; Image recognition; Sensitivity; Limiting; Text recognition; Biological system modeling; Optical character recognition; OCR; Gene; Biological Pathway; Biomedical Literature Mining; Name Recognition</p>
+        <p><a class="btn" href="https://ieeexplore.ieee.org/abstract/document/9995448" target="_blank" rel="noopener">View on IEEE Xplore</a></p>
+        <p><strong>Blurb:</strong> Biological pathway figures hold valuable scientific insights, but their complexity makes it difficult for computers to extract the information they contain. We tested leading Optical Character Recognition (OCR) tools to determine which could most accurately identify gene names in these diagrams. Across multiple datasets, Google Cloud Vision and MMOCR emerged as the top performers.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="card">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <div>
+          <h3>roadtripevs.com</h3>
+          <p><em>Your Practical Guide to Electric Road Trips</em></p>
+          <p><a href="https://roadtripevs.com/" target="_blank" rel="noopener">Visit site</a></p>
+        </div>
+        <div>
+          <p>RoadtripEVs is a personal, data-driven resource for finding and comparing EVs optimized for long-distance travel. It estimates charging time as a share of trip duration (10–80% charge) and factors in real-world electricity and gas costs for practical context. While built around my own EV search, it’s designed to help any driver make informed road trip choices.</p>
+        </div>
+      </div>
+
+      <div class="project" style="margin-top:16px;">
+        <div>
+          <h3>commacars.com</h3>
+          <p><em>Exploring Cars That Work with openpilot</em></p>
+          <p><a href="https://commacars.com/" target="_blank" rel="noopener">Visit site</a></p>
+        </div>
+        <div>
+          <p>CommaCars is a reference site built around the openpilot comma 3x ecosystem. Instead of focusing on every vehicle on the market, it narrows in on those officially supported by Comma.ai’s driver-assistance platform, making it easier to see what’s realistically compatible today. The site also surfaces estimated resale pricing to give shoppers a ballpark sense of cost, with clear reminders to verify numbers through sources like Edmunds, KBB, NADA, or TrueCar. The goal isn’t to replace deep research, but to give drivers a quick starting point when considering whether their next car could work with openpilot.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Stuart Aldrich • Email: <a href="mailto:aldrich.s@wustl.edu">aldrich.s@wustl.edu</a> — aldrich.s@wustl.edu
+  </footer>
 
   <script>
-    // Set year dynamically (keeps file evergreen)
+    // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Optional: smooth scroll for anchor links (kept tiny & retro-safe)
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){
-          e.preventDefault();
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
   </script>
 </body>
 </html>
